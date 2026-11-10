@@ -1,0 +1,15 @@
+# Copy this file to "local.properties" in the project root (same folder as
+# this file) and paste your real AccessKey there. Android Studio already
+# creates local.properties for the SDK path — just add this line to it.
+#
+# Get a free AccessKey at https://console.picovoice.ai after signing up.
+
+PICOVOICE_ACCESS_KEY=paste-your-real-access-key-here
+
+# Optional: powers smarter, looser command understanding (e.g. "hey can
+# you ring up dad" instead of only the exact "Hermes call Dad") by
+# falling back to an LLM when the simple parser doesn't recognize a
+# phrase. Get a key at https://openrouter.ai/keys — if this is left
+# blank, Hermes just skips the fallback and uses the rule-based parser
+# only, which still covers every command in the README.
+OPENROUTER_API_KEY=paste-your-real-key-here

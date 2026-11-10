@@ -1,0 +1,8 @@
+<resources>
+    <style name="Theme.Hermes" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/hermes_accent</item>
+        <item name="colorPrimaryDark">@color/hermes_bg</item>
+        <item name="colorAccent">@color/hermes_accent</item>
+        <item name="android:windowBackground">@color/hermes_bg</item>
+    </style>
+</resources>

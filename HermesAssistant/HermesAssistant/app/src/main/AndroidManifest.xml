@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Voice input -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- Calling -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+
+    <!-- Contacts lookup ("call Dad") -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <!-- Texting -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <!-- Floating popup bubble like Assistant overlay -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- Background listening service -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Resume background listening after a reboot, if the user had it on -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- So the "ignore battery optimization" prompt can be shown -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!-- Porcupine validates your AccessKey online the first time it runs -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Hermes"
+        android:theme="@style/Theme.Hermes"
+        android:usesCleartextTraffic="false">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Foreground service that listens for the "Hermes" command while app is open -->
+        <service
+            android:name=".HermesListenerService"
+            android:exported="false"
+            android:foregroundServiceType="microphone" />
+
+        <!-- Watches call state to detect no-answer / busy / declined -->
+        <service
+            android:name=".CallStateService"
+            android:exported="false" />
+
+        <!-- Legacy fallback background listener (plain SpeechRecognizer loop) -->
+        <service
+            android:name=".HermesWakeService"
+            android:exported="false"
+            android:foregroundServiceType="microphone" />
+
+        <!-- Real wake-word background listener (Porcupine), works with screen off -->
+        <service
+            android:name=".PorcupineWakeService"
+            android:exported="false"
+            android:foregroundServiceType="microphone" />
+
+        <receiver
+            android:name=".BootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+</manifest>

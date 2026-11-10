@@ -1,0 +1,7 @@
+<resources>
+    <color name="hermes_bg">#0E0F1A</color>
+    <color name="hermes_accent">#7C6CFF</color>
+    <color name="hermes_accent_dim">#4A3FBF</color>
+    <color name="hermes_text">#F2F2F7</color>
+    <color name="hermes_text_dim">#9A9AB0</color>
+</resources>

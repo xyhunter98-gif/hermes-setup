@@ -1,0 +1,9 @@
+This folder needs a file named exactly:
+
+    hermes_keyword.ppn
+
+That's your trained "Hermes" wake-word model from Picovoice Console —
+see the README's "Set up the wake word" section for the 2-minute steps
+to generate it (Android platform, English).
+
+Once it's here, delete this placeholder .txt file.
